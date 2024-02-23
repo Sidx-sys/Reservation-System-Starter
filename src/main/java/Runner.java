@@ -1,9 +1,15 @@
 import flight.reservation.Airport;
 import flight.reservation.flight.Schedule;
 import flight.reservation.flight.Flight;
+import flight.reservation.plane.A350Builder;
+import flight.reservation.plane.A380Builder;
+import flight.reservation.plane.AntonovAN2Builder;
+import flight.reservation.plane.Embraer190Builder;
 import flight.reservation.plane.Helicopter;
 import flight.reservation.plane.PassengerDrone;
 import flight.reservation.plane.PassengerPlane;
+import flight.reservation.plane.PlaneDirector;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,11 +26,74 @@ public class Runner {
             new Airport("Chengdu Shuangliu International Airport", "CTU", "Shuangliu-Wuhou, Chengdu, Sichuan")
     );
 
+        // create a380
+        public static PassengerPlane createA380(PlaneDirector director) {
+                
+                A380Builder builder = new A380Builder();
+                director.setPlaneType(builder);
+                director.constructPlane();
+                PassengerPlane a380 = builder.getResult();
+                return a380;
+        }
+
+        // create a350
+        public static PassengerPlane createA350(PlaneDirector director) {
+                A350Builder builder = new A350Builder();
+                director.setPlaneType(builder);
+                director.constructPlane();
+                PassengerPlane a350 = builder.getResult();
+                return a350;
+        }
+
+        // create embraer 190
+        public static PassengerPlane createEmbraer190(PlaneDirector director) {
+                Embraer190Builder builder = new Embraer190Builder();
+                director.setPlaneType(builder);
+                director.constructPlane();
+                PassengerPlane embraer190 = builder.getResult();
+                return embraer190;
+        }
+
+
+        // create antonov an2
+        public static PassengerPlane createAntonovAN2(PlaneDirector director) {
+                AntonovAN2Builder builder = new AntonovAN2Builder();
+                director.setPlaneType(builder);
+                director.constructPlane();
+                PassengerPlane antonovAN2 = builder.getResult();
+                return antonovAN2;
+        }
+
+
+        public static PassengerPlane createPassengerPlane(String model) {
+                switch (model) {
+                        case "A380":
+                                return createA380(new PlaneDirector());
+                        case "A350":
+                                return createA350(new PlaneDirector());
+                        case "Embraer 190":
+                                return createEmbraer190(new PlaneDirector());
+                        case "Antonov AN2":        
+                                return createAntonovAN2(new PlaneDirector());
+        
+                        default:
+                                return createAntonovAN2(new PlaneDirector());
+                }
+
+        }
+
+
+
+
     static List<Object> aircrafts = Arrays.asList(
-            new PassengerPlane("A380"),
-            new PassengerPlane("A350"),
-            new PassengerPlane("Embraer 190"),
-            new PassengerPlane("Antonov AN2"),
+        createPassengerPlane("A380"),
+        createPassengerPlane("A350"),
+        createPassengerPlane("Embraer 190"),
+        createPassengerPlane("Antonov AN2"),
+        //     new PassengerPlane("A380"),
+        //     new PassengerPlane("A350"),
+        //     new PassengerPlane("Embraer 190"),
+        //     new PassengerPlane("Antonov AN2"),
             new Helicopter("H1"),
             new PassengerDrone("HypaHype")
     );
