@@ -6,6 +6,9 @@ public class PassengerPlane {
     public int passengerCapacity;
     public int crewCapacity;
 
+    public PassengerPlane() {
+    }
+
     public PassengerPlane(String model) {
         this.model = model;
         switch (model) {
