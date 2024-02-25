@@ -25,7 +25,11 @@ public class Helicopter implements Aircraft{
         return model;
     }
 
-    // public int getPassengerCapacity() {
-    //     return passengerCapacity;
-    // }
+    public int getPassengerCapacity() {
+        return passengerCapacity;
+    }
+
+    public int getCrewCapacity() {
+        return crewCapacity;
+    }
 }

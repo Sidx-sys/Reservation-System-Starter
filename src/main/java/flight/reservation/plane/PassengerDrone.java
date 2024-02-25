@@ -19,4 +19,10 @@ public class PassengerDrone implements Aircraft{
     public String getModel() {
         return model;
     }
+    public int getPassengerCapacity() {
+        return passengerCapacity;
+    }
+    public int getCrewCapacity() {
+        return crewCapacity;
+    }
 }
