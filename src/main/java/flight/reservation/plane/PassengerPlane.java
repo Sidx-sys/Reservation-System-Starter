@@ -1,6 +1,6 @@
 package flight.reservation.plane;
 
-public class PassengerPlane {
+public class PassengerPlane implements Aircraft{
 
     public String model;
     public int passengerCapacity;
@@ -30,4 +30,11 @@ public class PassengerPlane {
         }
     }
 
+    public void serve()
+    {
+        System.out.println("We provide a great service");
+    }
+    public String getModel() {
+        return model;
+    }
 }
