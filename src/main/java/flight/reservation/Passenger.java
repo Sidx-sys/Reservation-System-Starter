@@ -1,8 +1,10 @@
 package flight.reservation;
 
 public class Passenger {
+    private String name;
 
-    private final String name;
+    public Passenger() {
+    }
 
     public Passenger(String name) {
         this.name = name;
@@ -11,5 +13,4 @@ public class Passenger {
     public String getName() {
         return name;
     }
-
 }
