@@ -1,9 +1,14 @@
 import flight.reservation.Airport;
 import flight.reservation.flight.Schedule;
 import flight.reservation.flight.Flight;
+import flight.reservation.plane.Aircraft;
 import flight.reservation.plane.Helicopter;
 import flight.reservation.plane.PassengerDrone;
 import flight.reservation.plane.PassengerPlane;
+import flight.reservation.plane.CreaterAircraft.AircraftCreator;
+import flight.reservation.plane.CreaterAircraft.DroneCreator;
+import flight.reservation.plane.CreaterAircraft.HeliCreater;
+import flight.reservation.plane.CreaterAircraft.PlaneCreator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,14 +24,18 @@ public class Runner {
             new Airport("Dubai International Airport", "DXB", "Garhoud, Dubai"),
             new Airport("Chengdu Shuangliu International Airport", "CTU", "Shuangliu-Wuhou, Chengdu, Sichuan")
     );
+    
+    static AircraftCreator heli = new HeliCreater();
+    static AircraftCreator plane = new PlaneCreator();
+    static AircraftCreator drone = new DroneCreator();
 
-    static List<Object> aircrafts = Arrays.asList(
-            new PassengerPlane("A380"),
-            new PassengerPlane("A350"),
-            new PassengerPlane("Embraer 190"),
-            new PassengerPlane("Antonov AN2"),
-            new Helicopter("H1"),
-            new PassengerDrone("HypaHype")
+    static List<Aircraft> aircrafts = Arrays.asList(
+        plane.createAircraft("A380"),
+        plane.createAircraft("A350"),
+        plane.createAircraft("Embraer 190"),
+        plane.createAircraft("Antonov AN2"),
+        heli.createAircraft("H1"),
+        drone.createAircraft("HypaHype")
     );
 
     static List<Flight> flights = Arrays.asList(

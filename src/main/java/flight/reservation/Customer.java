@@ -7,8 +7,8 @@ import flight.reservation.order.Order;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-public class Customer {
+import flight.reservation.offers.Subscriber;
+public class Customer implements Subscriber{
 
     private String email;
     private String name;
@@ -20,6 +20,10 @@ public class Customer {
         this.orders = new ArrayList<>();
     }
 
+    @Override
+    public void update(String data){
+        System.out.println("Customer " + this.getName() + " has reveived offer: " + data);
+    }
     public FlightOrder createOrder(List<String> passengerNames, List<ScheduledFlight> flights, double price) {
         if (!isOrderValid(passengerNames, flights)) {
             throw new IllegalStateException("Order is not valid");
