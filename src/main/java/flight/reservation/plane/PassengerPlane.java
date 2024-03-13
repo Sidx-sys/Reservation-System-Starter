@@ -1,10 +1,13 @@
 package flight.reservation.plane;
 
-public class PassengerPlane {
+public class PassengerPlane implements Aircraft{
 
     public String model;
     public int passengerCapacity;
-    public int crewCapacity;
+    private int crewCapacity;
+
+    public PassengerPlane() {
+    }
 
     public PassengerPlane(String model) {
         this.model = model;
@@ -28,6 +31,22 @@ public class PassengerPlane {
             default:
                 throw new IllegalArgumentException(String.format("Model type '%s' is not recognized", model));
         }
+    }
+
+    public void setCrewCapacity(int crewCapacity) {
+        this.crewCapacity = crewCapacity;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public int getCrewCapacity() {
+        return crewCapacity;
+    }
+
+    public int getPassengerCapacity() {
+        return passengerCapacity;
     }
 
 }
